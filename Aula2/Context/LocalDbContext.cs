@@ -9,7 +9,7 @@ namespace Aula2.Context
         
         }
     
-        public DbSet<Produto> produto {get;set;}
+        public DbSet<Produto> produto { get;set;}
         public DbSet<Categoria> categoria { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
