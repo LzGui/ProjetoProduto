@@ -1,5 +1,9 @@
+using Aula2.Adapter;
+using Aula2.Bordas.Repositorios;
 using Aula2.Context;
+using Aula2.Repositorios;
 using Aula2.Services;
+using Aula2.UseCase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,7 +35,15 @@ namespace Aula2
             services.AddEntityFrameworkNpgsql().AddDbContext<LocalDbContext>(opt => opt.UseNpgsql
             (Configuration.GetConnectionString("urlSquadra")));
 
+
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IAdicionarProdutoUseCase, AdicionarProdutoUseCase>();
+            services.AddScoped<IAtualizarProdutoUseCase, AtualizarProdutoUseCase>();
+            services.AddScoped<IRemoverProdutoUseCase, RemoverProdutoUseCase>();
+            services.AddScoped<IRetornarListaProdutoUseCase, RetornarListaProdutoUseCase>();
+            services.AddScoped<IRetornarProdutoPorIdUseCase, RetornarProdutoPorIdUseCase>();
+            services.AddScoped<IRepositorioProdutos, RepositorioProdutos>();
+            services.AddScoped<IAdicionarProdutoAdapter, AdicionarProdutoAdapter>();
 
             services.AddControllers();
         }
